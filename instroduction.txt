@@ -1,0 +1,5 @@
+this is a new filefolder,new repository,used to take notes;
+
+this repository create by 
+	git add remote takenote git@github.com:zenglaoda/takenote.git
+	git push -u takenote master
