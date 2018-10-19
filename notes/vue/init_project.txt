@@ -1,0 +1,22 @@
+开始一个vue项目,亦可以使用脚手架搭建
+
+一.初始化一个包
+    npm init 
+    执行该命令之后将会在当前文件夹下创建一个package.json文件。
+
+二.安装项目的依赖文件
+    npm install --save-dev webpack                      //用于打包
+
+    npm install --save-dev webpack-dev-server           //开启一个本地服务
+
+    npm install --save-dev webpack-cli                  //安装命令行工具
+
+    npm install vue
+
+    npm install vue-loader
+    //其中vue-loader中包含了VueLoaderPlugin工具
+
+    npm install vue-template-complier
+    //用于编译vue文件中的template代码
+    
+      

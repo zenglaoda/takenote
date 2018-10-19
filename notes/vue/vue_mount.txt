@@ -1,0 +1,38 @@
+import App from "./src/app.vue";
+一.Vue实例挂载到DOM节点上的两种方式
+    1)实例的$mount函数将实例挂载到指定的节点上
+        new Vue({
+            render:h=> h(App)
+        }).$mount('#app');
+    可以通过render函数手动渲染页面，也可以通过template属性指定浏览器渲染哪些内容
+
+    2)通过el属性指定实例挂载到哪个DOM节点上
+        new Vue({
+            el:"#app",
+            render:h=> h(App)
+        });
+
+二.Vue文件内容渲染的两种方式
+    1)通过vue实例的render函数手动渲染vue文件 template标签中的内容
+        new Vue({
+            el:"#app",
+            render:h=> h(App)
+        });
+
+    2)以组件的方式渲染vue文件中template标签的内容
+        new Vue({ 
+            el:"#app",
+            components:{App},
+            template:'<App/>'
+        });    
+        此方法同时需要在webpack配置文件中配上该选项
+        resolve: {
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': './src',
+            }
+        },
+        运行时构建不包含模板编译器，因此不支持template选项，只能用render选项，但即使使用运行时构建，
+        在单文件组件中也依然可以写模板，因为单文件组件的模板会在构建时预编译为render函数, render函数的使用,
+        完整构建则可以使用template选项

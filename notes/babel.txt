@@ -1,0 +1,29 @@
+babel中文网:https://babel.docschina.org/docs/en/usage
+
+一:polyfill
+    1)使用polyfille库补全指定版本浏览器中未实现的ES2015+功能。
+    如:babel.config.js配置文件
+    const presets = [
+        ["@babel/env", {
+            targets: {
+            edge: "17",
+                firefox: "60",
+                chrome: "67",
+                safari: "11.1"
+            },
+            useBuiltIns: "usage"
+        }]
+    ];
+    module.exports = { presets };
+    useBuiltIns:当设置为 "usage" 时，只包括你需要的 polyfill,Babel 将检查你的所有代码，以查找目标环境中缺少的功能，
+    并仅包含所需的 polyfill,如果我们没有将 env preset 的 "useBuiltIns" 选项的设置为 "usage" ，就必须在其他代码之前
+     require 一次完整的 polyfill。
+
+    2)可使用的配置文件(文件类型的不同)
+    babel.config.js            .babelrc               .babelrc.js
+
+    3)
+
+二.babel的功能：
+    Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如Iterator、Generator、Set、Map、Proxy、
+    Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。

@@ -1,0 +1,23 @@
+npm 的一些常用命令
+
+1)npm init
+    使用该命令初始化一个package.json文件
+
+    可选参数:
+        --y:初始化一个默认的package.json文件，初始化化时不需要填写任何东西
+
+
+2)npm install
+    安装当前文件夹中的package.json文件配置的所有依赖模块
+
+    可选参数:
+        --save-dev:
+            如npm install --save-dev webpack，将webpack模块安装到配置文件的devDependencies字段中表示
+            该模块只在开发时用到
+
+        --save:
+            表示安装到配置文件的denpendencies字段中，表示项目在生产时也依赖的模块
+
+3)npm list
+    显示node_modules目录及其子目录
+    
