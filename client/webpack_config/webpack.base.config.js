@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
+
 module.exports = {
     //构建的目标环境
     target:'web',
@@ -58,7 +59,26 @@ module.exports = {
             }
         ]
     },
+    resolve:{
+        //为文件路径配置别名
+        alias:{
+            '@':path.resolve(__dirname,'..','src'),
+            'vue$': 'vue/dist/vue.esm.js',
+        },
+        //为文件的引入配置默认可识别的拓展名
+        extensions:['.js','.vue','.json']
+    }
 };
+
+
+
+
+
+
+
+
+
+
 
 /*
 source-map的作用:

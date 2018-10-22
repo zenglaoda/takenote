@@ -1,0 +1,5 @@
+一.导航写法
+    1.命名路由name属性可以与param属性搭配，是否可以与query属性搭配
+    2.path属性可以与query属性搭配,能否与param属性一起使用,如:
+        {path:'/admin/user/:id/info/:age'}
+
