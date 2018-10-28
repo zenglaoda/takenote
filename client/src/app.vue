@@ -1,14 +1,12 @@
 <template>
-    <div>
-        <!-- <router-link to="/project">项目列表页</router-link>
-        <router-link to="/">登录页</router-link> -->
-        <div style="border:1px solid #ccc;min-height:300px;">
-           <router-view></router-view>
-        </div>
+    <div id="app">
+        <router-view></router-view>
     </div>
 </template>
-<style lang="less">
-
+<style lang="less" scoped>
+    #app{
+        height: 100%;
+    }
 </style>
 <script>
 export default {

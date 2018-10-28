@@ -5,68 +5,91 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     //构建的目标环境
-    target:'web',
+    target: 'web',
     //构建环境
-    mode:'development',
+    mode: 'development',
     //入口文件
-    entry:{
-        app:'./src/main.js'
+    entry: {
+        app: './src/main.js'
     },
     //输出文件
-    output:{
+    output: {
         //指定打包后生成的文件存放的位置
-        path:path.resolve(__dirname,"../",'dist/js'),           
+        path: path.resolve(__dirname, "../", 'dist/js'),
         //指定如何生成打包后的文件名字
-		filename:'[name].js',        
-    },    
+        filename: '[name].js',
+    },
     //开发调试工具
-    devtool: 'inline-source-map',  
+    devtool: 'inline-source-map',
     //配置开发时的本地服务器
-    devServer:{
-		port:'8081',                                          	//指定端口号
-		open:false,                                           	//自动打开浏览器
-		host:"0.0.0.0",                                	        //开启局域网
-		hot:true,                                             	//热替换，当页面中依赖的文件发生改变时，对改变的部分进行局部更新，而无需完全将页面进行更新
-    }, 
+    devServer: {
+        port: '8081',                                          	//指定端口号
+        open: false,                                           	//自动打开浏览器
+        host: "0.0.0.0",                                	        //开启局域网
+        hot: true,                                             	//热替换，当页面中依赖的文件发生改变时，对改变的部分进行局部更新，而无需完全将页面进行更新
+    },
     //配置插件
-    plugins:[
+    plugins: [
         //动态的生成一个html文件，然后将打包后生成的js文件动态的插入到生成的html文件中
         new HtmlWebpackPlugin({
             title: '首页',                                        //标题
             template: 'src/index.html',                           //模板文件
             filename: './index.html',                             //输出文件名
-            minify:{
-                    caseSensitive: false,                        //是否大小写敏感
-                    removeComments:false,                        // 去除注释
-                    removeEmptyAttributes:false,                 // 去除空属性
-                    collapseWhitespace: false                    //是否去除空格
+            minify: {
+                caseSensitive: false,                        //是否大小写敏感
+                removeComments: false,                        // 去除注释
+                removeEmptyAttributes: false,                 // 去除空属性
+                collapseWhitespace: false                    //是否去除空格
             }
         }),
 
         //启动热替换
         new webpack.HotModuleReplacementPlugin(),
-        
+
         //vue-loader一定要配合VueLoaderPlugin使用,它的职责是将你定义过的其它规则复制并应用到 .vue 文件里相应语言
         //的块。例如，如果你有一条匹配 /\.js$/ 的规则，那么它会应用到 .vue 文件里的 <script> 块
         new VueLoaderPlugin()
-    
+
     ],
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
-                test:/\.vue$/,
-                use:['vue-loader']
-            }
+                test: /\.vue$/,
+                use: ['vue-loader']
+            },  
+            {
+                //摘自element-ui webpack配置
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader']
+            },
+            {
+                //摘自element-ui webpack配置
+                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000
+                    }
+                }]
+            },
+
+            
+            {
+                //
+                test:/\.less$/,
+                use:['style-loader','css-loader','less-loader'] // 编译顺序从右往左
+            },  
         ]
     },
-    resolve:{
+    resolve: {
         //为文件路径配置别名
-        alias:{
-            '@':path.resolve(__dirname,'..','src'),
+        alias: {
+            '@': path.resolve(__dirname, '..', 'src'),
             'vue$': 'vue/dist/vue.esm.js',
+            '@project': path.resolve(__dirname, '..', 'src/project'),
         },
         //为文件的引入配置默认可识别的拓展名
-        extensions:['.js','.vue','.json']
+        extensions: ['.js', '.vue', '.json']
     }
 };
 

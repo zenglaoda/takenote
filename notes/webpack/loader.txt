@@ -1,0 +1,5 @@
+各个loader的用法及其功能:
+'style-loader', 'css-loader', 'postcss-loader','url-loader','file-loader','autoprefixer','less-loader','autoprefixer-loader'
+
+
+1.安装less-loader时需要一并安装less

@@ -39,7 +39,10 @@ const outlet = {
 const tempVue = {
     template:'<h1>正在开发中</h1>'
 };
-
+//临时页面
+const tempPage = {
+    template:'<h1>测试页面</h1>'
+};
 
 let routes = [
     {
@@ -65,11 +68,11 @@ let routes = [
         children:[
             {
                 path:'',
-                components:{
-                    sidebar:sidebar,
-                    head:head,
-                    content:blogList
-                }
+                component:blogList
+            },
+            {
+                path:'config',
+                component:tempVue
             },
         ]
     }
