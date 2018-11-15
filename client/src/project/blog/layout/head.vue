@@ -11,12 +11,16 @@
 <style lang="less" scoped>
     .box{
         height:60px;
+        width: 100%;
+        
         box-sizing: border-box;
         border-bottom: 1px solid #ccc;
         padding: 0 10px;
         overflow: hidden;
 
-        position: relative;
+        position: absolute;
+        top:0;
+        
         display: flex;
         justify-content: space-between; 
         align-items: center;

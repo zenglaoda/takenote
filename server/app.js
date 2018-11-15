@@ -1,13 +1,12 @@
 const Koa = require('koa');
 const app = new Koa();
-const addControllers = require(__dirname+'/controller/add_controller');
 
-const utils = require(__dirname+'/verdor/utils');
-// utils.print('router.json',addControllers('blog').router);
+const router = require(__dirname+'/framework/verdor/add_controller');
+const config = require('./framework/config/config');
 
-app.use(addControllers('menu'));
-app.use(addControllers('blog'));
-app.listen(3000);
+
+app.use(router.routes());
+app.listen(config.port);
 
 /*
 

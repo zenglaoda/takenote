@@ -52,19 +52,26 @@
         .side-left-shape{
             flex-grow: 0;
             flex-basis: 300px;
+            min-width: 300px;
         }
 
         //底部右边内容部分
         .side-right-shape{
             flex-grow: 1;
+            height:100%;
+            padding-top:60px;
+            overflow: hidden;
         }
         .side-right-pos{
+            position: relative;
 
         }
 
         .content{
-            padding-top:15px;
-            padding-left:15px;
+            padding:15px 40px 20px 15px;
+            overflow-y: scroll;            
+            position: relative;            
+            height:100%;
         }
     }
 </style>
