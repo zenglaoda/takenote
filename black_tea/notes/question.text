@@ -1,0 +1,40 @@
+知识点:
+    loader:
+        1.file-loader 可以指定要复制和放置资源文件的位置，以及如何使用版本哈希命名以获得更好的缓存。此外，这意味着 你可以就近管理图片文件，可以使用相对路径而不用担心部署时 URL 的问题。使用正确的配置，webpack 将会在打包输出中自动重写文件路径为正确的 URL。
+
+        2.url-loader 允许你有条件地将文件转换为内联的 base-64 URL (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求数。如果文件大于该阈值，会自动的交给 file-loader 处理。
+    
+    plugins:
+        1.MiniCssExtractPlugin 
+            参考地址:https://vue-loader.vuejs.org/zh/guide/extract-css.html#webpack-4
+            作用: 将组件中的css都提取出来放到一个指定的文件中。
+
+    路径解析:
+        output里面的path表示的是output目录对应的一个绝对路径。
+        output里面的publicPath表示的是打包生成的index.html文件里面引用资源的前缀
+        devServer里面的publicPath表示的是打包生成的静态文件所在的位置（若是devServer里面的publicPath没有设置，则会认为是output里面设置的publicPath的值）
+        devServer里面的contentBase表示的是告诉服务器从哪里提供内容。（只有想提供静态文件时才需要）
+
+    sass-loader依赖的node-sass安装失败问题解决:
+        https://segmentfault.com/a/1190000010984731?utm_source=tag-newest
+        npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+
+    cnpm的配置:
+        1.临时使用
+            npm --registry https://registry.npm.taobao.org install express
+
+        2.持久使用
+            npm config set registry https://registry.npm.taobao.org
+        参考地址:https://www.jianshu.com/p/2c0df2c25b29?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+
+问题:
+    1.vue-loader,vueLoaderPlugin的作用及其原理。
+    2.element-ui的element-cheme-chalk模块中的scss变量是如何共享到全局使用的。
+    3.webpack.NamedModulesPlugin()插件的作用
+
+尝试:
+    1.如何让打包出来的chunk文件名等于之前的路径名
+
+注意点:
+    1.sass语法与scss语法并不是完全相同的，老语法sass是使用缩进进行样式块区分的。
+    2.Vue Loader v15 不再默认应用 PostCSS 变换。你需要通过 postcss-loader 使用 PostCSS。

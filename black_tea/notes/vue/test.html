@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <ul>
+            <li v-for="i in list">{{i}}</li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data(){
+                return {
+                    list:['1','2','3']
+                };
+            }
+        });
+        
+        window.age = 'window12';
+        var obj = {
+            age:'obj13',
+            say(){
+                function speak(){
+                    console.log(this.age);
+                }
+                speak();
+            }
+        };
+        obj.say();
+
+    </script>
+</body>
+</html>

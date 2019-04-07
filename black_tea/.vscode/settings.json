@@ -1,0 +1,11 @@
+{
+    "eslint.autoFixOnSave": true,
+    // 专门写Vue的eslint配置
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        { "language": "html", "autoFix": true },
+        { "language": "vue", "autoFix": true }
+    ],
+    "vetur.validation.template": false  
+}
